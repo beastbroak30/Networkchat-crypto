@@ -81,6 +81,7 @@ class EncryptedChatClient:
                     print(e)
             except:
                 print(f"{Fore.RED} Server may be closed[FORCEFULLY] or cannot be reached")
+                break
 
     def send_messages(self):
         while True:
