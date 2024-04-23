@@ -87,7 +87,7 @@ class EncryptedChatClient:
         while True:
             try:
                 print(f"{self.username}:{Fore.YELLOW} Enter your message: {Style.RESET_ALL}", end='')
-                message = input()
+                message = input().lstrip().rstrip()
                 if not message:
                     continue
                 encrypted_message = self.cipher.encrypt(message.encode('utf-8'))
