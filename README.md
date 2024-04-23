@@ -114,11 +114,11 @@ options:
 ## **Help** menu from within the program
 ```shell
 python3 clientE.py 
-Enter your username: deniz
+Enter your username: ak
 Help Menu:
 	/help       -> Help menu
-deniz: Enter your message: /help
-deniz: Enter your message: 
+ak: Enter your message: /help
+ak: Enter your message: 
 Help Menu:
 	/help                           -> Help Menu
 	/exit                           -> Exit the program.
@@ -127,7 +127,7 @@ Help Menu:
 	/dm [user] [message]            -> Send a direct message to a user.
 	/changeuser [new_username]      -> Change your username.
 
-deniz: Enter your message: 
+ak: Enter your message: 
 ```
 
 --------------------------------------------------
