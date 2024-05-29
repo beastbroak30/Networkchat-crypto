@@ -19,7 +19,11 @@ Welcome to **CryptoChat** - where conversations remain truly private. Built on t
 8. **Adaptive Encryption Modes**: Choose between unencrypted and encrypted chat modes as per your need
 
 ---
-
+## Testing 
+- Windows 10,11
+- Ubuntu 22.04 LTS
+- Rasbian(Debian version: 12 (bookworm))
+- 
 ## Requirements
 
 - Python 3.x
