@@ -86,7 +86,11 @@ class ClientHandler(threading.Thread):
                                           "\t/userlist                       -> View the list of connected users.\n" \
                                           "\t/dm [user] [message]            -> Send a direct message to a user.\n" \
                                           "\t/changeuser [new_username]      -> Change your username.\n" \
-                                          "\t/devs                           -> For admiring whom it is made by "
+                                          "\t/devs                           -> For admiring whom it is made by.\n" \
+                                          "\t/ip                             -> For seeing your ip addr.\n" \
+                                          "\t/send                           -> For sending a file  to  the (one user at a time).\n" \
+                                          "\t/receive                        -> For receiving a file from the (one user at  time)" 
+                    
                     encrypted_response = cipher.encrypt(response.encode('utf-8'))
                     self.client_socket.send(encrypted_response)
                     continue
@@ -159,12 +163,16 @@ def start_server(host, port):
         logging.info(f"Server started on {host_ip}:{host_port}")
 
         while True:
-            current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            client_socket, client_address = server_socket.accept()
-            print(f"[{current_time}] {client_address} Connected.")
-            logging.info(f"Accepted connection from {client_address}")  
-            handler = ClientHandler(client_socket)
-            handler.start()
+            try:
+                current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                client_socket, client_address = server_socket.accept()
+                print(f"[{current_time}] {client_address} Connected.")
+                logging.info(f"Accepted connection from {client_address}")  
+                handler = ClientHandler(client_socket)
+                handler.start()
+            except KeyboardInterrupt:
+                print("Program terminated.....")
+                logging.info("Server was terminated by keyboard interrupt")
     except cryptography.fernet.InvalidToken:
         print(f"{Fore.RED}Incorrect Key:{Style.RESET_ALL} [{current_time}] {client_address}")
         logging.error(f"Invalid token for {client_address}")

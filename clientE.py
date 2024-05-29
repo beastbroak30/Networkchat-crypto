@@ -94,6 +94,36 @@ class EncryptedChatClient:
                 self.client_socket.send(encrypted_message)
                 if message == "/exit":
                     break
+                elif message.startswith('/send'):
+                    ch=input('Have you got the ip addr and port from the reciever (y/n):')
+                    if ch.lower()  in ['yes','y'] :
+                        os.system('python3 pfsend.py send -i' )
+                        del ch 
+                        continue
+                    else:
+                        print('dm the user you want to send to and say him to see help for receiving the  file with ext')
+                        del ch
+                        continue
+                    
+
+                elif message.startswith('/receive'):
+                    ch = input('Have you dm or send the ip given by /ip in your chat(y/n):')
+                    if ch.lower()  in ['yes','y']:
+                        try:
+                            os.system('python3 pfsend.py receive -i')
+                        except  Exception as e:
+                            print(f'An error occured {e}')
+                    else:
+                        print(Fore.YELLOW,'please send it to the user which will send the file to you: \n 1. Type the /ip in your terminal \n 2. Send it by /dm or directly typing \n 3. Run the /receive  command')
+                             
+
+                    
+                elif  message.startswith('/ip'):
+                    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                    s.connect(('8.8.8.8',80))
+                    print(Fore.GREEN,'Your ip addr is this: ',s.getsockname()[0])
+                    print(Fore.CYAN,'if you are using it to recieve a file please /dm it to the sender')
+                     
             except cryptography.fernet.InvalidToken:
                 continue
             except ConnectionRefusedError as e:
@@ -110,6 +140,17 @@ class EncryptedChatClient:
                 threading.Thread(target=self.listen_to_server, daemon=True).start()
                 self.send_messages()
         self.client_socket.close()
+    
+    
+def mkdir(f1,f2):
+    try:
+        os.makedirs(f1,mode=0o770,exist_ok=True)
+        os.makedirs(f2,mode=0o770,exist_ok=True)
+    except OSError:
+        os.system()
+            
+            
+
 
 
 if __name__ == "__main__":
@@ -118,6 +159,6 @@ if __name__ == "__main__":
     parser.add_argument("--port", type=int, default=12345, help="The port number of the server.")
     parser.add_argument("--key", default="mysecretpassword", help="The secret key for encryption.")
     args = parser.parse_args()
-
+    mkdir('dwn','upld')
     client = EncryptedChatClient(args.host, args.port, args.key)
     client.run()

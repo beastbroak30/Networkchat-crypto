@@ -14,22 +14,26 @@ def dir(dirpath):
   
 path= "serverE.py"
 path1="clientE.py" 
-if dir(path) and dir(path1):
+path2 = "pearsend.py"
+if dir(path) and dir(path1) and dir(path2):
     try:
         if  "win32" == op.lower():
             os.system('pip install -r requirements.txt')
         if 'linux' == op.lower():
-            os.system('pip3 install -r requiremets.txt')
+            os.system('pip3 install -r requirements.txt')
     except:
         print('Cannot install required lib')
         if  "win32" == op.lower():
             os.system('type requirements.txt')
         if 'linux' == op.lower():
             os.system('cat requirements.txt')
-    import colorama
-    print(colorama.Fore.GREEN,'All files  may have been installed so enjoy')
+    try:
+        import colorama
+        print(colorama.Fore.GREEN,'All files  may have been installed so enjoy')
+    except ImportError as e:
+        print('modules may not be installed correctly',e)
     os.system('color')
-    print('now you can run hostE.bat for server hosting and userE.bat for client')
+    print(r"now you can run .\hostE.bat for server hosting and .\userE.bat for client")
 
 else:
-    print("The required file are not present in current dir, please check it")
+    print(f"The required file are not present in current dir, please check if these files are present in your dir {path1,path,path2}")
