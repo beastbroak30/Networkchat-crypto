@@ -1,5 +1,5 @@
 # **CryptoChat**: Beyond Secure Messaging 
-Chatroom based on crypto protocol 
+Chatroom based on RSA protocol 
 
 
 
@@ -48,34 +48,7 @@ Welcome to **CryptoChat** - where conversations remain truly private. Built on t
 ---   
 
 ## Usage 
-#### unencrypted version
-
-   ```shell
-$ python3 server.py --help
-usage: server.py [-h] [--host HOST] [--port PORT] [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [--logfile LOGFILE]
-
-Start the chat server.
-
-options:
-  -h, --help            show this help message and exit
-  --host HOST           The IP address to bind the server to. (Default: 0.0.0.0)
-  --port PORT           The port number to bind the server to. (Default: 12345)
-  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL}
-                        Set the logging level (Default: INFO)
-  --logfile LOGFILE     Set the log file name. (Default: server.log
---------------------------------------------------------------------------
-$ python3 client.py --help
-usage: client.py [-h] [--host HOST] [--port PORT]
-
-Connect to the chat server.
-
-options:
-  -h, --help   show this help message and exit
-  --host HOST  The server's IP address.
-  --port PORT  The port number of the server.
-   ```
-
-#### The encrypted version
+#### Dev usage 
 
 ```shell
 $ python3 serverE.py --help
@@ -111,6 +84,29 @@ options:
 - `--loglevel`: Set the logging level
 - `--logfile` : Set the log file name
 
+  
+### For prompting execution
+- Windows
+  1. Server hosting:
+  ```shell
+  .\hostE.sh
+  ```
+  2. Client connect:
+  ```shell
+  .\userE.sh
+  ```
+- Linux
+  1. Server hosting:
+  ```shell
+  chmod +x hostE.sh
+  .\hostE.sh 
+  ```
+  2. Client connect:
+  ```shell
+  chmod +x userE.sh
+  .\userE.sh
+  ```
+  
 ## **Help** menu from within the program
 ```shell
 python3 clientE.py 
@@ -126,12 +122,16 @@ Help Menu:
 	/userlist                       -> View the list of connected users.
 	/dm [user] [message]            -> Send a direct message to a user.
 	/changeuser [new_username]      -> Change your username.
+	/devs                           -> For admiring whom it is made by.
+	/ip 				-> For seeing the your ip addr.
+	/send 				-> For sending the file to the (one user at a time)
+	/receive 			-> For receiving the file from the (one user at time) 
 
 ak: Enter your message: 
 ```
 
 --------------------------------------------------
-```
+
 
 ## Contributing
 
