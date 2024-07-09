@@ -41,7 +41,7 @@ Welcome to **CryptoChat** - where conversations remain truly private. Built on t
 2. Navigate to the project directory:
 
    ```shell
-   cd CryptoChat
+   cd Networkchat-Crypto
    ```
 
 3. Install the required dependencies:
