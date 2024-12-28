@@ -14,7 +14,7 @@ def dir(dirpath):
   
 path= "serverE.py"
 path1="clientE.py" 
-path2 = "pearsend.py"
+path2 = "pfsend.py"
 if dir(path) and dir(path1) and dir(path2):
     try:
         if  "win32" == op.lower():
